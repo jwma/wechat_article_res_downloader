@@ -14,7 +14,7 @@ import (
 	"sync"
 )
 
-func Downlaod(baseDir string, articleUrl string) error {
+func Download(baseDir string, articleUrl string) error {
 	resp, err := soup.Get(articleUrl)
 	if err != nil {
 		return fmt.Errorf("please make sure the article URL is correct. %v", articleUrl)

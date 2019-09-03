@@ -60,7 +60,7 @@ func main() {
 		fmt.Println(urlInput.Text)
 
 		makeProcessingStatus(downloadButton)
-		err := downloader.Downlaod(dirInput.Text, urlInput.Text)
+		err := downloader.Download(dirInput.Text, urlInput.Text)
 		if err != nil {
 			dialog.ShowError(err, downloaderWindow)
 			makeFreeStatus(downloadButton)

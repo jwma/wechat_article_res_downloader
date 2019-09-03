@@ -18,7 +18,7 @@ func main() {
 	if articleUrl == "" {
 		log.Fatal("请传入微信文章地址")
 	}
-	err := downloader.Downlaod(baseDir, articleUrl)
+	err := downloader.Download(baseDir, articleUrl)
 	if err != nil {
 		log.Fatal(err)
 	}
