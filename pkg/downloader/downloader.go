@@ -3,7 +3,7 @@ package downloader
 import (
 	"fmt"
 	"github.com/anaskhan96/soup"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -97,16 +97,11 @@ func handleImageResource(rd string, doc soup.Root) {
 			if err != nil {
 				panic(err)
 			}
-			d, err := ioutil.ReadAll(resp.Body)
+			_, err = io.Copy(imgFile, resp.Body)
+			if err != nil {
+				panic(err)
+			}
 			defer resp.Body.Close()
-			if err != nil {
-				panic(err)
-			}
-
-			_, err = imgFile.Write(d)
-			if err != nil {
-				panic(err)
-			}
 			defer imgFile.Close()
 		}(rd, strconv.Itoa(i+1), u)
 	}
